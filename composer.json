@@ -1,0 +1,16 @@
+{
+    "name": "3wa/framework",
+    "type": "framework",
+    "autoload": {
+        "psr-4": {
+            "3wa\\Framework\\": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.0",
+        "symfony/dotenv": "^6.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
