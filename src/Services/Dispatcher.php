@@ -5,39 +5,15 @@ namespace Services;
 use Services\Container\Container;
 
 use Services\App;
-use Symfony\Component\HttpFoundation\Request;
 
 class Dispatcher
 {
-    /**
-     * @var null|Container
-     */
-    private $container = null;
-
-    /**
-     * @var null|Container
-     */
-    protected $json = null;
-
-    /**
-     * @var string
-     */
-    private $content = '';
-
-    /**
-     * @var null|Request
-     */
-    private $request = null;
-
-    /**
-     * @var array
-     */
-    private $params = [];
-
-    /**
-     * @var mixed|null
-     */
-    private $router = null;
+    private ?Container $container = null;
+    protected ?Container $json = null;
+    private string $content = '';
+    private ?Request $request = null;
+    private array $params = [];
+    private mixed $router = null;
 
     public function __construct(Request $request)
     {
@@ -60,12 +36,11 @@ class Dispatcher
 
         try {
 
-            $route = $this->router->getRoute($this->request->getUri(), $this->request->getMethod());
+            $route = $this->router->getRoute($this->request->getUri(), $this->request->getVerb());
 
             if ($controller = $route->getController()) $controller = $this->makeController($controller);
 
             $this->params = ($route->getParams()) ? $route->getParams() : [];
-
             $this->content = $this->call($controller, $route->getAction());
 
             $this->send();
@@ -86,7 +61,6 @@ class Dispatcher
      */
     protected function makeController($controller)
     {
-
         $controllerClass = sprintf('%s', ucfirst($controller));
 
         if (!class_exists($controllerClass)) {

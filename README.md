@@ -1,7 +1,7 @@
 # TP_myFramework
 
 ## Mise en place de App
-1. App nos permet de resnseigner toutes nos information de notre framework notre container
+1. App nos permet de renseigner toutes nos information de notre framework notre container
 - Pour cela on a besoin de mettre en place un container
 2. On intégrer le container dans notre App `Services\App::set($container)`
 

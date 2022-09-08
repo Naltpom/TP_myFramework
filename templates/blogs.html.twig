@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blogs</title>
+    </head>
+    <body>
+    
+        <h1>Blogs</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Date de publication</th>
+                    <th>Contenue</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for blog in blogs %}
+                <tr>
+                    <td><a href="/blogs/{{- blog.id -}}">{{- blog.id -}}</a></td>
+                    <td>{{- blog.title -}}</td>
+                    <td>{{- blog.author -}}</td>
+                    <td>{{- blog.datePublished|date('d/m/Y') -}}</td>
+                    <td>{{- blog.content -}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </body>
+</html>

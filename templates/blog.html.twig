@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blogs</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <h1>Blog n°{{- blog.id -}}</h1>
+        <a href="/blogs">Retour</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Date de publication</th>
+                    <th>Contenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{- blog.title -}}</td>
+                    <td>{{- blog.author -}}</td>
+                    <td>{{- blog.datePublished|date('d/m/Y') -}}</td>
+                    <td>{{- blog.content -}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>

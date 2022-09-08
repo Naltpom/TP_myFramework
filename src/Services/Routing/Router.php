@@ -19,11 +19,11 @@ class Router implements \Countable
     public function getRoute($url, $verb = 'get')
     {
         foreach ($this->routes as $route) {
+            /** @var Route $route */
             if ($route->isMatch($url, $verb)) {
                 return $route;
             }
         }
-
         throw new \RuntimeException("bad route exception, getRoute");
     }
 

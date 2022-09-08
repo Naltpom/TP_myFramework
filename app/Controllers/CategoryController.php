@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controllers;
 
-use Services\Controller\AbstractController;
+use Services\AbstractController;
 use Services\Routing\Route;
 
 class CategoryController extends AbstractController
