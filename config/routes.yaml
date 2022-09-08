@@ -1,0 +1,13 @@
+BlogController_index:
+  pattern:   \/
+  connect:  App\Controllers\BlogController:index
+
+BlogController_show:
+  pattern:   \/post\/(?P<id>[1-9][0-9]*)
+  connect:  App\Controllers\BlogController:show
+  params: id
+
+CategoryController_show:
+  pattern:   \/cat\/[a-zA-Z0-9\-_]+\/(?P<cat_id>[1-9][0-9]*)\/(?P<user_id>[1-9][0-9]*)
+  connect:  App\Controllers\CategoryController:show
+  params: cat_id, user_id

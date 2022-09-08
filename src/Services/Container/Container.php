@@ -26,7 +26,6 @@ class Container implements \ArrayAccess
      */
     public function offsetGet($k): mixed
     {
-
         if (!isset($this->p[$k]))
             throw new \InvalidArgumentException('unknow value:' . $k);
 
