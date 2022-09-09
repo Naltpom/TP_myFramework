@@ -19,8 +19,8 @@ php -S 127.0.0.1:8000 public/index.php
 ### Systeme du routing
 Pour mettre en place une nouvelle route vers le controller
 #### routes.yaml (To be replaced by 'route attributes')
-Pour ajouter une nouvelle route avec `config/routes.yaml` il suffit d'ajouter dans ce fichier les information nessessaire a cette route.
->Exemple
+Pour ajouter une nouvelle route avec `config/routes.yaml` il suffit d'ajouter dans ce fichier les information nessessaire a cette route. Exemple:
+
 ```yaml
 BlogController_show:
   pattern:  \/blogs\/(?P<id>[1-9][0-9]*)
@@ -36,17 +36,19 @@ WIP: Il sera possible de definir les routes directement sur les controller en de
 ### Systeme de templating
 Pour les views on intégre tiwg à notre projet
 On a definit le dossier `templates` pour contenir les templates twig recuperable dans les controllers.
-> doc twig : https://twig.symfony.com/doc/3.x/templates.html <
+> doc twig : https://twig.symfony.com/doc/3.x/templates.html.
+
 On met a disposition dans `AbstractController` ce model de templating.
 Dans nos controller on va pouvoir `return $this->twig->render(..)` et dans ce render on mettre le path du template a afficher a placer dans le dossier `templates`.
 
 ### Les controllers
 Pour ajouter des controllers
-> namespace `namespace App\Controller` <
-> nom du fichier = "nom de la class".php <
-> la class doit `extends AbstractController` pour befinifier des render twig par exemple <
-```php #app/Controllers/TestController.php
-<?php
+- namespace `namespace App\Controller`.
+- nom du fichier = "nom de la class".php.
+- la class doit `extends AbstractController` pour befinifier des render twig par exemple.
+
+```php 
+<?php #app/Controllers/TestController.php
 namespace App\Controller;
 
 use Services\AbstractController;
