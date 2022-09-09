@@ -47,7 +47,7 @@ class Dispatcher
 
         } catch (\RuntimeException $e) {
 
-            $controller = $this->makeController('\\Controllers\\NotFoundController');
+            $controller = $this->makeController('App\\Controllers\\NotFoundController');
             $this->content = $this->call($controller, 'index');
 
             $this->send('404 Not Found');
