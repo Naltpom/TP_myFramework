@@ -15,6 +15,23 @@ class Route
         private $params = null
     ) {
         $this->setConnect($connect);
+        $this->setPattern();
+    }
+
+    public function setPattern()
+    {
+        // if (null !== $this->pattern && null === $this->path || $this->path === '/blogs') {
+        //     return;
+        // }
+        $pattern = $this->path;
+        if (preg_match_all("/{(.*?)}/", $this->path, $matches)) {
+            foreach ($matches[0] as $key => $value) {
+                $pattern = str_replace($value, "(.*?)", $pattern);
+                $a[$value] = $matches[1][$key];
+            }
+            $this->params = $a;
+        }
+        $this->pattern = str_replace('/', '\/', $pattern);
     }
 
     public function getPath(): ?string
@@ -99,14 +116,24 @@ class Route
     
     public function setParams($m)
     {
-        if (empty($this->params)) {
-            return;
-        }
+        // if (empty($this->params)) {
+        //     return;
+        // }
+        // if ('string' === gettype($this->params)) {
+        //     $params = explode(',', (string) $this->params);
+        //     $this->params = [];
+        //     foreach ($params as $p) {
+        //         $this->params[$p] = $m[$p];
+        //     }
+        // } else {
+        //     $params = $this->params;
+        //     $this->params = [];
+        //     foreach ($params as $p) {
+        //         $this->params[$p] = $m[$p];
+        //     }
+        // }
 
-        $params = explode(',', (string) $this->params);
-        $this->params = [];
-        foreach ($params as $p) {
-            $this->params[$p] = $m[$p];
-        }
+        // dd($this->params, $m, $this->path);
+
     }
 }

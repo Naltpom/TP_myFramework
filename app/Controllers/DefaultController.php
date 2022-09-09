@@ -8,7 +8,7 @@ use Services\Routing\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * Cette route permet de retourner la liste des blogs
+     * 
      */
     #[Route(path: '/', method: 'GET')]
     public function index(): string

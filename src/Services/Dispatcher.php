@@ -2,9 +2,10 @@
 
 namespace Services;
 
-use Services\Container\Container;
-
 use Services\App;
+use Services\Container\Container;
+use Services\Routing\Router;
+use Symfony\Component\HttpFoundation\Request;
 
 class Dispatcher
 {
@@ -13,7 +14,7 @@ class Dispatcher
     private string $content = '';
     private ?Request $request = null;
     private array $params = [];
-    private mixed $router = null;
+    private ?Router $router = null;
 
     public function __construct(Request $request)
     {
@@ -35,9 +36,8 @@ class Dispatcher
             throw new \RuntimeException('no route');
 
         try {
-
-            $route = $this->router->getRoute($this->request->getUri(), $this->request->getVerb());
-
+            $route = $this->router->getRoute($this->request->getRequestUri(), $this->request->getMethod());
+            dd($route);
             if ($controller = $route->getController()) $controller = $this->makeController($controller);
 
             $this->params = ($route->getParams()) ? $route->getParams() : [];

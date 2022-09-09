@@ -11,7 +11,7 @@ class BlogController extends AbstractController
     /**
      * Cette route permet de retourner la liste des blogs
      */
-    #[Route(path: '/blogs', method: 'GET')]
+    #[Route(path: '/blogs', methods: ['GET'])]
     public function index(): string
     {
         $blogs = [];
@@ -31,7 +31,7 @@ class BlogController extends AbstractController
      * Cette route permet de retourner un blog
      * @param int $id - id of a speficif blog
      */
-    #[Route(path: '/blogs/{id}', method: 'GET')]
+    #[Route(path: '/blogs/{id}/{tata}', params: ['id', 'tata'], methods: ['GET'])]
     public function show(int $id): string
     {
         $blog = [
